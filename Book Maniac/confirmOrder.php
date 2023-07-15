@@ -10,15 +10,15 @@ if(isset($_REQUEST['submit']))
     $pincode=$_REQUEST['pincode'];
     $contact=$_REQUEST['contact'];
    // $payment=$_REQUEST['payment'];
-    $q2="Select *from addcard;";
+    $q2="Select *from addcart;";
    $result= mysqli_query($con, $q2);
    while ($row = mysqli_fetch_array($result))
    {    
-       $q3="INSERT INTO `orderdetails`(`id`, `bname`, `authorName`, `price`,`Name`, `address`, `city`, `state`, `pincode`, `contact`) VALUES ($row[0],'$row[1]','$row[2]','$row[3]','$name','$address','$city','$state',$pincode,$contact);";
+       $q3="INSERT INTO `orderdetails`(`Order_ID`, `BName`, `AuthorName`, `Price`,`Name`, `Address`, `City`, `State`, `Pincode`, `Contact`) VALUES ($row[0],'$row[1]','$row[2]','$row[3]','$name','$address','$city','$state',$pincode,$contact);";
        mysqli_query($con, $q3);
    }
-    mysqli_query($con, $q);
-     $q1="truncate table addcard;";
+    mysqli_query($con, $q2);
+     $q1="truncate table addcart;";
     mysqli_query($con, $q1);
     header('location:sucess.php');           
 }
@@ -104,14 +104,14 @@ and open the template in the editor.
                             <div class="form-group">
                                 <input type="text" class="form-control"  placeholder="Contact" maxlength="10" size="10" name="contact" required="true">  
                                  <div class="form-group">
-                                     <h5 style="color:red">*PAYMENT MODE: CASH ON DELIVERY
-</h5>
-                                        
-   
-                            </div>
-                                <center>
-                                <input type="submit" name="submit" value='Proceed To Order' class="btn btn-success" style="align:cneter"><span>
+                                     <h5 style="color:red">*PAYMENT MODE: CASH ON DELIVERY</h5>
+                                     <input type="submit" name="submit" value='Proceed To Order' class="btn btn-success" style="align:cneter"><span>
                                     <input type="submit" value='Cancel' name="cancel" class="btn btn-success" style="align:cneter"></span><br><br>
+                                </div>
+                                <center>
+                                <div class="form-group">
+                               
+                                </div>
                                 </center>
                                 
                         </form>
@@ -124,7 +124,7 @@ and open the template in the editor.
         </div>
             
         <?php
- include 'footer.php';
+ include 'footer2.php';
 ?>
         
     </body>

@@ -4,10 +4,10 @@ $email=$_GET['email'];
 $password=$_GET['password'];
 $new=$_GET['new'];
 $again=$_GET['again'];
-$q= "SELECT email, password FROM signin WHERE Email ='$email';";
+$q= "SELECT Email, Password FROM signin WHERE Email ='$email';";
 $result = mysqli_query($con, $q)or die($mysqli_error($con));
 $row = mysqli_fetch_array($result);
-$tablepassword = $row['password'];
+$tablepassword = $row['Password'];
 if($new!=$again)
 {
   header('location: setting.php?error=new password and retypes password don\'t match');

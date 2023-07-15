@@ -1,6 +1,6 @@
 <?php
 $con= mysqli_connect("localhost", "root", "", "bookmaniac") or die(mysqli_error($con));
-if (isset($_SESSION['Email'])) {
+if (isset($_SESSION['User_ID'])) {
     header('location: home.php');
 }
 ?>

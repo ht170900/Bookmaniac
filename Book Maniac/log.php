@@ -7,9 +7,11 @@ $q=mysqli_query($x,"SELECT * FROM signin where Email='$Email' AND Password='$Pas
 $n=mysqli_num_rows($q);
 if($n==1)
 {
-$_SESSION['Email']=$Email;
-echo '<script>alert("You are logged in")</script>';
-header('Location:home.php');
+    $row = mysqli_fetch_assoc($q);
+    $User_ID = $row['User_ID'];
+    $_SESSION['User_ID']=$User_ID;
+    echo '<script>alert("You are logged in")</script>';
+    header('Location:home.php');
 }
  else {
      $error = "<span style='color:red'>** Email id or Password is incorrect.Please try again!</span>";

@@ -44,7 +44,7 @@
                         $sum = 0;
                         $con= mysqli_connect("localhost", "root", "", "bookmaniac") or die(mysqli_error($con));
 
-                        $query = "SELECT * FROM `addcard` ";
+                        $query = "SELECT * FROM `addcart` ";
                         $result = mysqli_query($con, $query)or die($mysqli_error($con));
                         if (mysqli_num_rows($result) >= 1) {
                             ?>
@@ -60,9 +60,9 @@
                             <tbody>
                                 <?php
                                 while ($row = mysqli_fetch_array($result)) {
-                                    $sum+= $row[3];
                                     $id = $row[0];
-                                    echo "<tr><td>" . "#" . $row[0] . "</td><td>" . $row[1] . "</td><td>Rs " . $row[2] . "</td><td>Rs " . $row[3] . "</td><td><a href='cart-remove.php?id={$row['id']}' class='remove_item_link'> Remove</a></td></tr>";
+                                    $sum += $row[3];
+                                    echo "<tr><td>" . "#" . $row[0] . "</td><td>" . $row[1] . "</td><td>Rs " . $row[2] . "</td><td>Rs " . $row[3] . "</td><td><a href='cart-remove.php?id={$row['AC_ID']}' class='remove_item_link'> Remove</a></td></tr>";
                                 
                                     }
                                 
